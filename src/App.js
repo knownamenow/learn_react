@@ -3,11 +3,22 @@ import Header from './Header';
 import FbButton from './FbButton';
 
 class App extends Component{
-  state ={ like:0 , dislike:0 }
+  state ={ like:0 }
+
+  componentWillMount(){
+    console.log('App:willMMount')
+  }
+
+  componentDidMount(){
+    console.log('App:didMount')
+  }
+
   render(){
     return(
       <div>
-        <Header />
+        <Header>
+          I am Header
+        </Header>
         <h4>Like: {this.state.like}</h4>
         <h4>Dislike: {this.state.dislike}</h4>
         <FbButton handleClick={this.onLike} caption='Like'/>
