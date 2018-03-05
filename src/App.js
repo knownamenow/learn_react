@@ -1,49 +1,33 @@
 import React,{Component} from 'react';
-import Header from './Header';
-import FbButton from './FbButton';
-
 class App extends Component{
-  state ={ like:0 }
-
-  componentWillMount(){
-    console.log('App:willMMount')
-  }
-
-  componentDidMount(){
-    console.log('App:didMount')
-  }
-
+  state = {name:''}
   render(){
     return(
       <div>
-        <Header>
-          I am Header
-        </Header>
-        <h4>Like: {this.state.like}</h4>
-        <h4>Dislike: {this.state.dislike}</h4>
-        <FbButton handleClick={this.onLike} caption='Like'/>
-        <FbButton handleClick={this.onDisLike} caption='DisLike'/>
-        
-        Heloo world
+        <h1>App Page</h1>
+        <form>
+          <label>
+            Name:
+          <input type="text"
+            name="name"
+            placeholder="enter Name"
+
+            value={this.state.name}
+            onChange={this.handleChange}
+          />
+          </label>
+        </form>
+        <button onClick={this.handleClick}>Change Text</button>
       </div>
     );
   }
-  onLike=()=>{
-    this.setState((prevState,props)=>{
-      return{
-        like:prevState.like+1
-      }
-    })
-    this.setState((prevState,props)=>{
-      return{
-        like:prevState.like+1
-      }
-    })
-    
-  }
-  onDisLike=()=>{
-    this.setState({dislike:this.state.dislike+1})
 
-  }
+    handleClick = e =>{
+      this.setState({name:"I am React"})
+    }
+    handleChange = e =>{
+      this.setState({name:e.target.value})
+    }
+
 }
 export default App;
